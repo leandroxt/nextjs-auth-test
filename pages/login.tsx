@@ -14,7 +14,7 @@ export default function Home() {
     setState((ps) => ({ ...ps, [target.id]: target.value }));
   }
 
-  function onsubmit(e: FormEvent<HTMLFormElement>) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
@@ -43,8 +43,18 @@ export default function Home() {
       </Head>
 
       <main>
-        Login
-        <form onSubmit={onsubmit}>
+        <form
+          onSubmit={onSubmit}
+          style={{
+            position: "absolute",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          Login
           <input
             type="email"
             id="email"

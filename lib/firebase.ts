@@ -18,4 +18,5 @@ export {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendEmailVerification
 } from "firebase/auth";

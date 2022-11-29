@@ -20,11 +20,30 @@ export default function Home() {
 
       <AuthenticationChecker>
         <main>
-          Home - private
-          <br />
-          <button type="button" onClick={logout}>
-            Log out
-          </button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            <p>Home - private</p>
+            <button type="button" onClick={logout}>
+              Log out
+            </button>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "50vh",
+              border: 'dashed 2px #ccc'
+            }}
+          >
+            <input type="file" />
+          </div>
         </main>
       </AuthenticationChecker>
     </div>

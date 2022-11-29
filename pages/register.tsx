@@ -1,6 +1,10 @@
 import Head from "next/head";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { auth, createUserWithEmailAndPassword } from "@lib/firebase";
+import {
+  auth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "@lib/firebase";
 import { useRouter } from "next/router";
 
 export default function Home() {
@@ -18,9 +22,17 @@ export default function Home() {
     e.preventDefault();
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
-        router.push("/login");
+
+        sendEmailVerification(userCredential.user)
+          .then(() => {
+            confirm("Verifique seu email e confirme sua conta");
+            router.push("/login");
+          })
+          .catch((err) => {
+            console.error("Erro ao enviar email", { err });
+          });
         // ...
       })
       .catch((error) => {
